@@ -15,147 +15,139 @@ import Records from './pages/User/Records';
 import Prescription from './pages/User/Prescription';
 import Profile from './pages/User/Profile';
 
-// Doctor Pages (placeholder - to be implemented)
+// Doctor Pages
 import DoctorDashboard from './pages/Doctor/Dashboard';
 import DoctorPatients from './pages/Doctor/Patients';
 import DoctorDiagnose from './pages/Doctor/Diagnose';
 
-// Admin Pages (placeholder - to be implemented)
+// Admin Pages
 import AdminDashboard from './pages/Admin/Dashboard';
 import AdminUsers from './pages/Admin/Users';
 import AdminDoctors from './pages/Admin/Doctors';
 
 // Shared Pages
+import Home from './pages/Home/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Articles from './pages/Articles';
+import Quizzes from './pages/Quizzes';
+import AIConsultant from './pages/AIConsultant';
+import Videos from './pages/Videos';
+import Bookings from './pages/Bookings';
+import PeerSupport from './pages/PeerSupport';
+import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
 
-/**
- * Role-Based Redirect Component
- * 
- * Purpose: Redirects users to their appropriate dashboard based on their role
- */
+/* Role-Based Redirect for default /app route */
 const RoleBasedRedirect = () => {
   const { getRole, loading } = useAuth();
-  
-  // Show loading while authentication is being initialized
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
-      </div>
-    );
-  }
-  
-  const userRole = getRole();
+  if (loading) return <div>Loading...</div>;
 
-  switch (userRole) {
-    case 'admin':
-      return <Navigate to="/admin/dashboard" replace />;
-    case 'doctor':
-      return <Navigate to="/doctor/dashboard" replace />;
-    case 'user':
-    default:
-      return <Navigate to="/dashboard" replace />;
+  const role = getRole();
+  switch (role) {
+    case 'admin': return <Navigate to="/app/admin/dashboard" replace />;
+    case 'doctor': return <Navigate to="/app/doctor/dashboard" replace />;
+    default: return <Navigate to="/app/dashboard" replace />;
   }
 };
 
-/**
- * App Routes Component
- * 
- * Purpose: Contains all the routing logic inside AuthProvider context
- */
-const AppRoutes = () => {
-  return (
-    <Routes>
-      {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      
-      {/* Protected Routes with Layout */}
-      <Route path="/" element={
+/* App Routes */
+const AppRoutes = () => (
+  <Routes>
+    {/* Public Routes */}
+    <Route path="/" element={<Home />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/articles" element={<Articles />} />
+    <Route path="/quizzes" element={<Quizzes />} />
+    <Route path="/ai-consultant" element={<AIConsultant />} />
+    <Route path="/videos" element={<Videos />} />
+    <Route path="/bookings" element={<Bookings />} />
+    <Route path="/peer-support" element={<PeerSupport />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/signup" element={<Signup />} />
+
+    {/* Protected /app Routes */}
+    <Route
+      path="/app"
+      element={
         <ProtectedRoute>
           <Layout />
         </ProtectedRoute>
-      }>
-        {/* Default route - redirect based on user role */}
-        <Route index element={<RoleBasedRedirect />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="records" element={<Records />} />
-        <Route path="records/:id" element={<Records />} />
-        <Route path="prescriptions" element={<Navigate to="/dashboard" replace />} />
-        <Route path="prescriptions/:id" element={<Prescription />} />
-        <Route path="profile" element={<Profile />} />
-        
-        {/* Doctor Routes */}
-        <Route path="doctor/dashboard" element={
+      }
+    >
+      <Route index element={<RoleBasedRedirect />} />
+      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="records" element={<Records />} />
+      <Route path="records/:id" element={<Records />} />
+      <Route path="prescriptions/:id" element={<Prescription />} />
+      <Route path="profile" element={<Profile />} />
+      <Route path="settings" element={<Settings />} />
+
+      {/* Doctor Routes */}
+      <Route
+        path="doctor/dashboard"
+        element={
           <ProtectedRoute roles={['doctor', 'admin']}>
             <DoctorDashboard />
           </ProtectedRoute>
-        } />
-        <Route path="doctor/patients" element={
+        }
+      />
+      <Route
+        path="doctor/patients"
+        element={
           <ProtectedRoute roles={['doctor', 'admin']}>
             <DoctorPatients />
           </ProtectedRoute>
-        } />
-        <Route path="doctor/patients/:id" element={
-          <ProtectedRoute roles={['doctor', 'admin']}>
-            <Records />
-          </ProtectedRoute>
-        } />
-        <Route path="doctor/diagnose" element={
+        }
+      />
+      <Route
+        path="doctor/diagnose"
+        element={
           <ProtectedRoute roles={['doctor', 'admin']}>
             <DoctorDiagnose />
           </ProtectedRoute>
-        } />
-        <Route path="doctor/diagnose/:patientId" element={
-          <ProtectedRoute roles={['doctor', 'admin']}>
-            <DoctorDiagnose />
-          </ProtectedRoute>
-        } />
-        
-        {/* Admin Routes */}
-        <Route path="admin/dashboard" element={
+        }
+      />
+
+      {/* Admin Routes */}
+      <Route
+        path="admin/dashboard"
+        element={
           <ProtectedRoute roles={['admin']}>
             <AdminDashboard />
           </ProtectedRoute>
-        } />
-        <Route path="admin/users" element={
+        }
+      />
+      <Route
+        path="admin/users"
+        element={
           <ProtectedRoute roles={['admin']}>
             <AdminUsers />
           </ProtectedRoute>
-        } />
-        <Route path="admin/doctors" element={
+        }
+      />
+      <Route
+        path="admin/doctors"
+        element={
           <ProtectedRoute roles={['admin']}>
             <AdminDoctors />
           </ProtectedRoute>
-        } />
-      </Route>
-      
-      {/* 404 Route */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
-};
+        }
+      />
+    </Route>
 
-/**
- * Main App Component
- * 
- * Purpose: Main application component with routing configuration
- * 
- * Features:
- * - Role-based routing with protected routes
- * - Authentication context provider
- * - Layout wrapper for authenticated routes
- * - Public routes for authentication
- * - 404 handling for invalid routes
- * - Automatic redirects based on user role
- */
+    {/* 404 */}
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 function App() {
   return (
     <AuthProvider>
-      <div className="App">
-        <DemoInfo />
-        <AppRoutes />
-      </div>
+      <DemoInfo />
+      <AppRoutes />
     </AuthProvider>
   );
 }
