@@ -165,7 +165,7 @@ const Sidebar = () => {
         {/* Additional links */}
         <div className="mt-8 pt-6 border-t border-blue-900/20">
           <NavLink
-            to="/settings"
+            to="/app/settings"
             className={({ isActive }) =>
               `sidebar-link ${
                 isActive ? 'sidebar-link-active' : 'sidebar-link-inactive'
@@ -179,7 +179,7 @@ const Sidebar = () => {
           {/* Admin-only security link */}
           {role === 'admin' && (
             <NavLink
-              to="/admin/security"
+              to="/app/admin/security"
               className={({ isActive }) =>
                 `sidebar-link ${
                   isActive ? 'sidebar-link-active' : 'sidebar-link-inactive'

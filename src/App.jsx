@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Layout from './components/Layout/Layout';
 import DemoInfo from './components/DemoInfo';
+import Landing from './pages/Landing';
 
 // Auth Pages
 import Login from './pages/Auth/Login';
@@ -49,12 +50,12 @@ const RoleBasedRedirect = () => {
 
   switch (userRole) {
     case 'admin':
-      return <Navigate to="/admin/dashboard" replace />;
+      return <Navigate to="/app/admin/dashboard" replace />;
     case 'doctor':
-      return <Navigate to="/doctor/dashboard" replace />;
+      return <Navigate to="/app/doctor/dashboard" replace />;
     case 'user':
     default:
-      return <Navigate to="/dashboard" replace />;
+      return <Navigate to="/app/dashboard" replace />;
   }
 };
 
@@ -67,11 +68,12 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Public Routes */}
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       
-      {/* Protected Routes with Layout */}
-      <Route path="/" element={
+      {/* Protected Routes with Layout under /app */}
+      <Route path="/app" element={
         <ProtectedRoute>
           <Layout />
         </ProtectedRoute>
@@ -81,7 +83,7 @@ const AppRoutes = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="records" element={<Records />} />
         <Route path="records/:id" element={<Records />} />
-        <Route path="prescriptions" element={<Navigate to="/dashboard" replace />} />
+        <Route path="prescriptions" element={<Navigate to="/app/dashboard" replace />} />
         <Route path="prescriptions/:id" element={<Prescription />} />
         <Route path="profile" element={<Profile />} />
         
@@ -129,6 +131,22 @@ const AppRoutes = () => {
           </ProtectedRoute>
         } />
       </Route>
+
+      {/* Legacy path redirects to /app equivalents */}
+      <Route path="/dashboard" element={<Navigate to="/app/dashboard" replace />} />
+      <Route path="/records" element={<Navigate to="/app/records" replace />} />
+      <Route path="/records/:id" element={<Navigate to="/app/records/:id" replace />} />
+      <Route path="/prescriptions" element={<Navigate to="/app/dashboard" replace />} />
+      <Route path="/prescriptions/:id" element={<Navigate to="/app/prescriptions/:id" replace />} />
+      <Route path="/profile" element={<Navigate to="/app/profile" replace />} />
+      <Route path="/doctor/dashboard" element={<Navigate to="/app/doctor/dashboard" replace />} />
+      <Route path="/doctor/patients" element={<Navigate to="/app/doctor/patients" replace />} />
+      <Route path="/doctor/patients/:id" element={<Navigate to="/app/doctor/patients/:id" replace />} />
+      <Route path="/doctor/diagnose" element={<Navigate to="/app/doctor/diagnose" replace />} />
+      <Route path="/doctor/diagnose/:patientId" element={<Navigate to="/app/doctor/diagnose/:patientId" replace />} />
+      <Route path="/admin/dashboard" element={<Navigate to="/app/admin/dashboard" replace />} />
+      <Route path="/admin/users" element={<Navigate to="/app/admin/users" replace />} />
+      <Route path="/admin/doctors" element={<Navigate to="/app/admin/doctors" replace />} />
       
       {/* 404 Route */}
       <Route path="*" element={<NotFound />} />

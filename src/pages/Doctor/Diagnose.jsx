@@ -67,12 +67,12 @@ const Diagnose = () => {
   const handleSuccess = () => {
     // Show success message and redirect
     alert('Diagnosis saved successfully!');
-    navigate('/doctor/patients');
+    navigate('/app/doctor/patients');
   };
 
   // Handle form cancellation
   const handleCancel = () => {
-    navigate('/doctor/patients');
+    navigate('/app/doctor/patients');
   };
 
   if (loading) {
@@ -93,7 +93,7 @@ const Diagnose = () => {
         <h3 className="text-lg font-medium text-gray-900 mb-2">Error Loading Patient</h3>
         <p className="text-gray-600 mb-4">{error}</p>
         <button
-          onClick={() => navigate('/doctor/patients')}
+          onClick={() => navigate('/app/doctor/patients')}
           className="btn-primary"
         >
           Back to Patients
@@ -108,7 +108,7 @@ const Diagnose = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <button
-            onClick={() => navigate('/doctor/patients')}
+            onClick={() => navigate('/app/doctor/patients')}
             className="flex items-center text-mint-600 hover:text-mint-700"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />

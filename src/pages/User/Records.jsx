@@ -199,7 +199,7 @@ const Records = () => {
         
         {patientId && (
           <Link
-            to="/doctor/patients"
+            to="/app/doctor/patients"
             className="flex items-center text-mint-600 hover:text-mint-700"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />

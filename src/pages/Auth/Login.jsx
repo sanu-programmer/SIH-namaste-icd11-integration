@@ -41,14 +41,14 @@ const Login = () => {
       const role = getRole();
       switch (role) {
         case 'doctor':
-          navigate('/doctor/dashboard', { replace: true });
+          navigate('/app/doctor/dashboard', { replace: true });
           break;
         case 'admin':
-          navigate('/admin/dashboard', { replace: true });
+          navigate('/app/admin/dashboard', { replace: true });
           break;
         case 'user':
         default:
-          navigate('/dashboard', { replace: true });
+          navigate('/app/dashboard', { replace: true });
           break;
       }
     }
@@ -113,10 +113,10 @@ const Login = () => {
         const role = getRole();
         switch (role) {
           case 'doctor':
-            navigate('/doctor/dashboard', { replace: true });
+            navigate('/app/doctor/dashboard', { replace: true });
             break;
           case 'admin':
-            navigate('/admin/dashboard', { replace: true });
+            navigate('/app/admin/dashboard', { replace: true });
             break;
           case 'user':
           default:
@@ -146,16 +146,16 @@ const Login = () => {
       // Redirect based on the role parameter directly
       switch (role) {
         case 'doctor':
-          navigate('/doctor/dashboard', { replace: true });
+          navigate('/app/doctor/dashboard', { replace: true });
           break;
         case 'admin':
-          navigate('/admin/dashboard', { replace: true });
+          navigate('/app/admin/dashboard', { replace: true });
           break;
         case 'user':
-          navigate('/dashboard', { replace: true });
+          navigate('/app/dashboard', { replace: true });
           break;
         default:
-          navigate('/dashboard', { replace: true });
+          navigate('/app/dashboard', { replace: true });
           break;
       }
     } else {

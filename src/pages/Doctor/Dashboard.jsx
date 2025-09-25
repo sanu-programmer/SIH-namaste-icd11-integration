@@ -339,7 +339,7 @@ const Dashboard = () => {
               Today&apos;s Appointments
             </h2>
             <Link
-              to="/doctor/patients"
+              to="/app/doctor/patients"
               className="text-sm text-mint-600 hover:text-mint-700 font-medium"
             >
               View all
@@ -460,7 +460,7 @@ const Dashboard = () => {
             Recent Diagnoses
           </h2>
           <Link
-            to="/doctor/patients"
+            to="/app/doctor/patients"
             className="text-sm text-mint-600 hover:text-mint-700 font-medium"
           >
             View all
@@ -504,7 +504,7 @@ const Dashboard = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
-            to="/doctor/patients"
+            to="/app/doctor/patients"
             className="flex items-center p-4 bg-mint-50 rounded-lg hover:bg-mint-100 transition-colors duration-200"
           >
             <Users className="h-6 w-6 text-mint-600 mr-3" />
@@ -512,7 +512,7 @@ const Dashboard = () => {
           </Link>
           
           <Link
-            to="/doctor/diagnose"
+            to="/app/doctor/diagnose"
             className="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200"
           >
             <Stethoscope className="h-6 w-6 text-blue-600 mr-3" />
@@ -520,7 +520,7 @@ const Dashboard = () => {
           </Link>
           
           <Link
-            to="/doctor/records"
+            to="/app/doctor/records"
             className="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200"
           >
             <FileText className="h-6 w-6 text-green-600 mr-3" />

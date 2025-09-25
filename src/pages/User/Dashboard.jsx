@@ -267,7 +267,7 @@ const Dashboard = () => {
               Upcoming Appointments
             </h2>
             <Link
-              to="/appointments"
+              to="/app/appointments"
               className="text-sm text-mint-600 hover:text-mint-700 font-medium"
             >
               View all
@@ -311,7 +311,7 @@ const Dashboard = () => {
               Recent Prescriptions
             </h2>
             <Link
-              to="/prescriptions"
+              to="/app/prescriptions"
               className="text-sm text-mint-600 hover:text-mint-700 font-medium"
             >
               View all
@@ -365,7 +365,7 @@ const Dashboard = () => {
             Recent Medical Visits
           </h2>
           <Link
-            to="/records"
+            to="/app/records"
             className="text-sm text-mint-600 hover:text-mint-700 font-medium"
           >
             View all records
@@ -417,7 +417,7 @@ const Dashboard = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
-            to="/appointments/new"
+            to="/app/appointments/new"
             className="flex items-center p-4 bg-mint-50 rounded-lg hover:bg-mint-100 transition-colors duration-200"
           >
             <Calendar className="h-6 w-6 text-mint-600 mr-3" />
@@ -425,7 +425,7 @@ const Dashboard = () => {
           </Link>
           
           <Link
-            to="/records"
+            to="/app/records"
             className="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors duration-200"
           >
             <FileText className="h-6 w-6 text-blue-600 mr-3" />
@@ -433,7 +433,7 @@ const Dashboard = () => {
           </Link>
           
           <Link
-            to="/profile"
+            to="/app/profile"
             className="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-200"
           >
             <Activity className="h-6 w-6 text-green-600 mr-3" />

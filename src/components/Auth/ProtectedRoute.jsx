@@ -48,12 +48,12 @@ const ProtectedRoute = ({ children, roles = null, requireAbha = false }) => {
     // Redirect to appropriate dashboard based on user's actual role
     switch (userRole) {
       case 'doctor':
-        return <Navigate to="/doctor/dashboard" replace />;
+        return <Navigate to="/app/doctor/dashboard" replace />;
       case 'admin':
-        return <Navigate to="/admin/dashboard" replace />;
+        return <Navigate to="/app/admin/dashboard" replace />;
       case 'user':
       default:
-        return <Navigate to="/dashboard" replace />;
+        return <Navigate to="/app/dashboard" replace />;
     }
   }
 

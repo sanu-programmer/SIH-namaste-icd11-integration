@@ -161,7 +161,7 @@ const Prescription = () => {
         <Pill className="h-12 w-12 text-gray-300 mx-auto mb-4" />
         <h3 className="text-lg font-medium text-gray-900 mb-2">Prescription Not Found</h3>
         <p className="text-gray-600 mb-4">The requested prescription could not be found.</p>
-        <Link to="/prescriptions" className="btn-primary">
+        <Link to="/app/prescriptions" className="btn-primary">
           View All Prescriptions
         </Link>
       </div>
@@ -174,7 +174,7 @@ const Prescription = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Link
-            to="/prescriptions"
+            to="/app/prescriptions"
             className="flex items-center text-mint-600 hover:text-mint-700"
           >
             <ArrowLeft className="h-4 w-4 mr-1" />

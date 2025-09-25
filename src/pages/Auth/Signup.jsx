@@ -38,7 +38,7 @@ const Signup = () => {
   // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated()) {
-      navigate('/dashboard', { replace: true });
+      navigate('/app/dashboard', { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
