@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Auth Token</title>
+</head>
+<body>
+    <h1>Test Authentication</h1>
+    <button onclick="setAuthToken()">Set Test Auth Token</button>
+    <button onclick="testAPI()">Test API Connection</button>
+    <div id="result"></div>
+    
+    <script>
+        function setAuthToken() {
+            localStorage.setItem('authToken', 'test-token-123');
+            document.getElementById('result').innerHTML = 'Auth token set!';
+        }
+        
+        async function testAPI() {
+            try {
+                const response = await fetch('http://localhost:5000/api/v1/namaste/bundles/upload', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                    },
+                    body: JSON.stringify({
+                        resourceType: 'Bundle',
+                        type: 'collection',
+                        entry: []
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 'API Test Result: ' + JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

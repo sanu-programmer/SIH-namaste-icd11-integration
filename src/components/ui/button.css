@@ -1,0 +1,25 @@
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+/* Variants */
+.btn-default { background-color: #e0e0e0; color: #000; }
+.btn-cta { background-color: #3b82f6; color: #fff; }
+.btn-nav { background-color: transparent; color: #fff; border: 1px solid #fff; }
+.btn-login { background: linear-gradient(135deg, #fff, #f8fafc); color: #1e3a8a; }
+.btn-primary { background-color: #2563eb; color: #fff; }
+.btn-secondary { background-color: #6b7280; color: #fff; }
+
+/* Sizes */
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+.btn-md { padding: 8px 20px; font-size: 14px; }
+.btn-lg { padding: 12px 28px; font-size: 16px; }
+
+.btn:hover {
+  filter: brightness(0.9);
+}
